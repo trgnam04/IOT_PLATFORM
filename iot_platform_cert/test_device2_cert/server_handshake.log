@@ -1,0 +1,61 @@
+depth=0 C = AU, ST = Some-State, O = Internet Widgits Pty Ltd, CN = 192.168.1.74
+verify error:num=18:self-signed certificate
+verify return:1
+depth=0 C = AU, ST = Some-State, O = Internet Widgits Pty Ltd, CN = 192.168.1.74
+verify return:1
+CONNECTED(00000003)
+---
+Certificate chain
+ 0 s:C = AU, ST = Some-State, O = Internet Widgits Pty Ltd, CN = 192.168.1.74
+   i:C = AU, ST = Some-State, O = Internet Widgits Pty Ltd, CN = 192.168.1.74
+   a:PKEY: id-ecPublicKey, 256 (bit); sigalg: ecdsa-with-SHA256
+   v:NotBefore: Jul 28 07:33:30 2025 GMT; NotAfter: Jul 28 07:33:30 2026 GMT
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIBszCCAVkCFHY2Y7huxkJ9grVAyjEU2j5HN/+lMAoGCCqGSM49BAMCMFwxCzAJ
+BgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5l
+dCBXaWRnaXRzIFB0eSBMdGQxFTATBgNVBAMMDDE5Mi4xNjguMS43NDAeFw0yNTA3
+MjgwNzMzMzBaFw0yNjA3MjgwNzMzMzBaMFwxCzAJBgNVBAYTAkFVMRMwEQYDVQQI
+DApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQx
+FTATBgNVBAMMDDE5Mi4xNjguMS43NDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA
+BAfLI82RdUU0GjAdwHXlfPYaykR+pQRmqfgTnMFLUVcdWk0hnNX1eTydSfLfDL7a
+3O0UBKyTRgWQRwL4xWR8hz4wCgYIKoZIzj0EAwIDSAAwRQIhAOO3y8rwT6aEx3X+
++9rHNKoEWsY2S5Cqoi7LFUJga7ayAiBi2dsOCUAzwmF/m0ObBrXsx2hE7nonmHxN
+UMFW4VPiaQ==
+-----END CERTIFICATE-----
+subject=C = AU, ST = Some-State, O = Internet Widgits Pty Ltd, CN = 192.168.1.74
+issuer=C = AU, ST = Some-State, O = Internet Widgits Pty Ltd, CN = 192.168.1.74
+---
+No client certificate CA names sent
+Client Certificate Types: ECDSA sign, RSA sign
+Requested Signature Algorithms: ECDSA+SHA256:RSA+SHA256
+Shared Requested Signature Algorithms: ECDSA+SHA256:RSA+SHA256
+Peer signing digest: SHA256
+Peer signature type: ECDSA
+Server Temp Key: X25519, 253 bits
+---
+SSL handshake has read 915 bytes and written 645 bytes
+Verification error: self-signed certificate
+---
+New, TLSv1.2, Cipher is ECDHE-ECDSA-AES256-GCM-SHA384
+Server public key is 256 bit
+Secure Renegotiation IS supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+SSL-Session:
+    Protocol  : DTLSv1.2
+    Cipher    : ECDHE-ECDSA-AES256-GCM-SHA384
+    Session-ID: FF834BB2ADE6C44859102531887EB4056CB258CFCE39D4A01E3BD632EBF702C6
+    Session-ID-ctx: 
+    Master-Key: DC6C661ABAEC5929E641657CBE14EC4084E4471FC58BFFBA24114E4341570169CF00D27E881360369DE8E1A46E1EE96A
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    Start Time: 1753693911
+    Timeout   : 7200 (sec)
+    Verify return code: 18 (self-signed certificate)
+    Extended master secret: yes
+---
+DONE

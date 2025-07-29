@@ -1,0 +1,66 @@
+version: '3.8'
+services:
+  mytbedge:
+    restart: always
+    image: "thingsboard/tb-edge-pe:4.0.1EDGEPE"
+    ports:
+      - "8080:8080"
+      - "1883:1883"
+      - "8883:8883" 
+      - "5683-5688:5683-5688/udp"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/tb-edge
+      EDGE_LICENSE_INSTANCE_DATA_FILE: /data/instance-edge-license.data
+      CLOUD_ROUTING_KEY: c1d66bb0-2a59-0452-58ce-4d17f33717b0
+      CLOUD_ROUTING_SECRET: slyux4e64m3874qtp6ch
+      CLOUD_RPC_HOST: app.coreiot.io
+      CLOUD_RPC_PORT: 7070
+      CLOUD_RPC_SSL_ENABLED: false
+      
+      COAP_DTLS_ENABLED: "true"
+      COAP_DTLS_CREDENTIALS_TYPE: "PEM"
+      COAP_DTLS_PEM_CERT: "/data/certs/server.pem"
+      COAP_DTLS_PEM_KEY: "/data/certs/server_key.pem"
+      COAP_DTLS_PEM_KEY_PASSWORD: "secret"
+      
+      MQTT_SSL_BIND_ADDRESS: "0.0.0.0"
+      MQTT_SSL_BIND_PORT: "8883"
+      MQTT_SSL_PROTOCOL: "TLSv1.2"
+      MQTT_SSL_SKIP_VALIDITY_CHECK_FOR_CLIENT_CERT: "false"
+
+      MQTT_SSL_ENABLED: "true"
+      MQTT_SSL_CREDENTIALS_TYPE: "PEM"
+      MQTT_SSL_PEM_CERT: "/data/certs/server.pem"
+      MQTT_SSL_PEM_KEY: "/data/certs/server_key.pem"
+      MQTT_SSL_PEM_KEY_PASSWORD: "secret"   
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - tb-edge-data:/data
+      - tb-edge-logs:/var/log/tb-edge
+      - ../../iot_platform_cert/server_cert/:/data/certs                               
+
+  postgres:
+    restart: always
+    image: "postgres:15"
+    ports:
+      - "5432"
+    environment:
+      POSTGRES_DB: tb-edge
+      POSTGRES_PASSWORD: postgres
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - tb-edge-postgres-data:/var/lib/postgresql/data
+
+volumes:
+  tb-edge-data:
+    name: tb-edge-data
+  tb-edge-logs:
+    name: tb-edge-logs
+  tb-edge-postgres-data:
+    name: tb-edge-postgres-data
