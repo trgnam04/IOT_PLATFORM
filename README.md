@@ -175,7 +175,7 @@ coap-client-openssl -m POST -v 9 \
   -j iot_platform_cert/test_device3_cert/key.pem \
   -t "application/json" \
   -e '{"temperature":43}' \
-  "coaps://YOUR_SERVER_IP_OR_DOMAIN:5688/api/v1/X509/telemetry"
+  "coaps://YOUR_SERVER_IP_OR_DOMAIN:5688/api/v1/telemetry"
 ```
 
 ### Bước 5: Nạp chương trình cho ESP32
